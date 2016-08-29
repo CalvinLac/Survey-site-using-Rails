@@ -1,0 +1,20 @@
+<%= link_to "Back to Home", surveys_path %>
+
+<div class='container'>
+  <div class='col-md-4 col-md-offset-4'>
+    <h1 align='center'> <u>Calvin's Survey Site</u> </h1>
+    <br>
+    <h4 align='center'> <b>1.Build Survery</b> | 2. Add Questions </h4>
+    <br>
+    <p align="center"> The first step in creating a survey is choosing as title and a description for your survey </p>
+    <br>
+    <br>
+    <h3> Survey Title</h3>
+    <%= form_for Questionaire.new, url: surveys_builders_path do |q| %>
+      Title<%= q.text_field :title %>
+      <br>
+      Description<%= q.text_field :description %>
+      <%= q.submit %>
+    <%end%>
+  </div>
+</div>
