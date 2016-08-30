@@ -4,9 +4,10 @@ class Surveys::BuildersController < ApplicationController
   end
 
   def create
-    @questionaire = Questionaire.new(my_params)
+    @questionaire = Questionaire.new(questionaire_params)
     if @questionaire.save
-      redirect_to surveys_path
+      session[:current_questionaire_id] = @questionaire.id
+      redirect_to new_surveys_question_path
     else
       flash[:error] = "There was an error when trying to create your account"
       render :new
@@ -15,7 +16,7 @@ class Surveys::BuildersController < ApplicationController
 
 
   private
-  def my_params
+  def questionaire_params
     params.require(:questionaire).permit(:title, :description)
   end
 end

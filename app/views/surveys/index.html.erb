@@ -3,14 +3,21 @@
     <h1 align='center'> Calvin's Survey Site </h1>
     <br>
     <p align='center'> Click on a survey to take it or create one on your own </p>
-    <button type="button" class="btn btn-primary btn-lg btn-block">Create Survey</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block"><%=link_to "Create A Survey", surveys_path %></button>
   </div>
 </div>
 
 <div class='container'>
   <div class='col-md-4 col-md-offset-4'>
     <h2> Take a Survey</h2>
-    #code for surveys
+    <% @questionaire.each do |questionaire| %>
+      <br>
+      Title:<h4><%= questionaire.title %></h4>
+      <br>
+      Description:<h4><%= questionaire.description %></h4>
+      <br>
+      <h3><%= link_to "Take the survey", survey_path(questionaire)%></h3>
+    <%end%>
 
   </div>
 </div>
