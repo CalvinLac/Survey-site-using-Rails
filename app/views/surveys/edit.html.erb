@@ -1,0 +1,40 @@
+<%= render "shared" %>
+
+<div class='container'>
+  <div class='col-md-4 col-md-offset-4'>
+    <h1 align='center'> Survey Taker </h1>
+    <br>
+    <h3 align="center"> <%= @questionaire.title %> </h3>
+    <h4 align="center"> <%= @questionaire.description %> </h4>
+  </div>
+</div>
+
+<div class='container'>
+  <div class='col-md-4 col-md-offset-4'>
+    <%= form_for @questionaire, url: surveys_builders_path do |questionaire_field| %>
+      <br>
+      <%= questionaire_field.fields_for :questions do |question_field| %>
+        <%= question_field.label :answer%>
+        <%=question_field.text_field :answer %>
+      <%end%>
+      <%= questionaire_field.submit %>
+    <%end%>
+  </div>
+</div>
+
+
+<div class='container'>
+ <div class='col-md-4 col-md-offset-4'>
+ <%= form_for @questionaire, url: surveys_builders_path do |questionaire_field| %>
+   <br>
+   <%i=0%>
+   <%= questionaire_field.fields_for :questions do |question_field| %>
+           <%=@questionaire.questions[i].title %>
+           <%i=i+1%>
+       <%= question_field.label :answer%>
+       <%=question_field.text_field :answer %>
+   <%end%>
+ <%= questionaire_field.submit %>
+ <%end%>
+ </div>
+</div>

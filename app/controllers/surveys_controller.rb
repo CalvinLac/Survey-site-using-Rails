@@ -2,15 +2,11 @@ class SurveysController < ApplicationController
 
   def index
     @questionaire = Questionaire.all
-    session.delete(:current_questionaire_id)
   end
 
-  def show
-    @questionaire = Questionaire.find_by(params[:id])
-
-    @questionaire.id = Questionaire.find_by(params[:id])
-
-    @question = @questionaire.questions
+  def edit
+    @questionaire = Questionaire.find(params[:id])
+    @questions = @questionaire.questions
   end
 
 end
