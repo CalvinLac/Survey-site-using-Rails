@@ -1,8 +1,20 @@
-<%= @questionaire.id %>
+<%= render "shared" %>
 
+<div class='container'>
+  <div class='col-md-4 col-md-offset-4'>
+    <h1 align='center'> Survey Results </h1>
+    <br>
+    <h3 align="center"> <%= @questionaire.title %> </h3>
+    <h4 align="center"> <%= @questionaire.description %> </h4>
+  </div>
+</div>
 
-<% @question.each do |questions| %>
-  <br>
-  Question:<%= questions.title %>
-  <br>
+<%i=0%>
+<% @questionaire.questions.each do |q| %> 
+  <div class='container'>
+    <div class='col-md-4 col-md-offset-4'>
+      <h3> Question: <%=i+=1%> <%= q.title %> </h3>
+      <h4> <%= q.answer %> </h4>
+    </div>
+  </div>
 <%end%>

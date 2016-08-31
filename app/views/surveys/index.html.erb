@@ -19,6 +19,7 @@
       Description:<h4><%= questionaire.description %></h4>
       <br>
       <h3><%= link_to "Take the survey", edit_survey_path(questionaire)%></h3>
+      <h3><%= link_to "See the results", survey_path(questionaire)%></h3>
     <%end%>
 
   </div>
